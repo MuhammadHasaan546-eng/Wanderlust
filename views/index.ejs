@@ -1,0 +1,116 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+<style>
+  /* #filters {
+    display: flex;
+    flex-wrap: wrap;
+  } */
+   #filters {
+}
+
+.filter {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter i {
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.filter:hover {
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.filter:hover i {
+  color: #0d6efd; /* Bootstrap primary color */
+}
+
+
+
+</style>
+
+<body>
+
+<div class=" ">
+  <div id="filters" class="d-flex justify-content-start gap-4 flex-nowrap overflow-auto">
+
+    <div class="filter text-center">
+      <i class="fa-brands fa-gripfire"></i>
+      <p class="mb-0">Trending</p>
+    </div>
+
+    <div class="filter text-center">
+      <i class="fa-solid fa-bed"></i>
+      <p class="mb-0">Rooms</p>
+    </div>
+
+     <div class="filter text-center">
+      <i class="fa-solid fa-city"></i>
+      <p class="mb-0">Iconic cities</p>
+    </div>
+     <div class="filter text-center">
+      <i class="fa-solid fa-mountain"></i>
+      <p class="mb-0">Mountains</p>
+    </div>
+     <div class="filter text-center">
+<i class="fa-brands fa-fort-awesome-alt"></i>
+      <p class="mb-0">Castles</p>
+    </div>
+      <div class="filter text-center">
+      <i class="fa-solid fa-utensils"></i>
+        <p class="mb-0">Amenities</p>
+    </div>
+      <div class="filter text-center">
+      <i class="fa-solid fa-sun"></i>
+        <p class="mb-0">Amzing views</p>
+    </div>
+      <div class="filter text-center">
+      <i class="fa-solid fa-swimming-pool"></i>
+        <p class="mb-0">Pool</p>
+    </div>
+      <div class="filter text-center">
+      <i class="fa-solid fa-campground"></i>
+        <p class="mb-0">Camping</p>
+    </div>
+      <div class="filter text-center">
+      <i class="fa-solid fa-tractor"></i>
+        <p class="mb-0">Farm</p>
+    </div>
+  <div class="filter text-center">
+      <i class="fa-solid fa-snowflake"></i>
+    <p class="mb-0">Arctic</p>
+    </div>
+
+
+    
+
+  </div>
+</div>
+  <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1 g-4 cards-container mt-3">
+      
+      <% for(listing of allListings) { %>
+
+        <a href="/listings/<%= listing._id %>">
+
+  <div class="card col " style="height: 20rem;">
+  <img src="<%=listing.image.url %>" class="card-img-top" alt="listing_image">
+  <div class="card-body">
+    <h5 class="card-title"><%= listing.title %> </h5>
+    <p class="card-text"> Price: <%= listing.price.toLocaleString('en-PK', { style: 'currency', currency: 'PKR' }) %> / night
+</p>
+  </div>
+  </div>
+          </a>
+
+
+   <%    } %>
+   
+     </div>
+
+    
+  
+  
+  
+</body>
