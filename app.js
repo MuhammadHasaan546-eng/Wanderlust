@@ -1,6 +1,5 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+require("dotenv").config();
+
 const express = require("express");
 const engine = require("ejs-mate");
 const app = express();
@@ -35,7 +34,10 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(MONGODB_URL);
+  await mongoose.connect(MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 }
 const store = MongoStore.create({
   mongoUrl: MONGODB_URL,
